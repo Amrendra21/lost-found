@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://lost-found-frontend-izo5.onrender.com", // ← your actual frontend Render URL
+      "lost-found-lilac.vercel.app", 
     ],
     credentials: true,
   }),
