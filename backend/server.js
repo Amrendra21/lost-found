@@ -8,7 +8,17 @@ const itemRoutes = require("./routes/items");
 
 const app = express();
 
-app.use(cors());
+// CORS — allow local dev and your Vercel frontend
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://your-app-name.vercel.app", // ← replace with your actual Vercel URL after deploy
+    ],
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 
 // Routes
@@ -20,8 +30,8 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
-    app.listen(process.env.PORT, () =>
-      console.log(`Server running on port ${process.env.PORT}`),
+    app.listen(process.env.PORT || 5000, () =>
+      console.log(`Server running on port ${process.env.PORT || 5000}`),
     );
   })
-  .catch((err) => console.error(err));
+  .catch((err) => console.error("MongoDB connection error:", err));
