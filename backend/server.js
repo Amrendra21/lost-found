@@ -8,12 +8,11 @@ const itemRoutes = require("./routes/items");
 
 const app = express();
 
-// CORS — allow local dev and your Vercel frontend
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "lost-found-lilac.vercel.app", 
+      "https://lost-found-lilac.vercel.app", // ✅ https:// added
     ],
     credentials: true,
   }),
@@ -21,11 +20,9 @@ app.use(
 
 app.use(express.json());
 
-// Routes
 app.use("/api", authRoutes);
 app.use("/api/items", itemRoutes);
 
-// Connect to MongoDB & Start Server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
