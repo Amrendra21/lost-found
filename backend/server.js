@@ -13,7 +13,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://your-app-name.vercel.app", // ← replace with your actual Vercel URL after deploy
+      "https://lost-found-wx1i.onrender.com", // your render URL
+      // "https://your-app.vercel.app"  ← add this after Vercel deploy
     ],
     credentials: true,
   }),
